@@ -198,12 +198,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     let currentTrackIndex = 0;
-    let isPlaying = false;
 
     // Elementos do DOM
     const audio = document.getElementById('audio-player');
     const playBtn = document.getElementById('play-pause-btn');
-    const playIcon = document.getElementById('play-icon');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
     const vinyl = document.querySelector('.vinyl-record');
@@ -232,20 +230,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function playTrack() {
-        isPlaying = true;
-        audio.play();
-        vinyl.classList.add('playing');
-        playIcon.setAttribute('data-lucide', 'pause');
-        lucide.createIcons();
+        audio.play().catch(error => {
+            if (error.name !== 'AbortError') {
+                console.error('Não foi possível reproduzir a música.', error);
+            }
+        });
     }
 
     function pauseTrack() {
-        isPlaying = false;
         audio.pause();
-        vinyl.classList.remove('playing');
-        playIcon.setAttribute('data-lucide', 'play');
+    }
+
+    function updatePlaybackUI() {
+        const isPlaying = !audio.paused;
+        vinyl.classList.toggle('playing', isPlaying);
+        playBtn.setAttribute('aria-label', isPlaying ? 'Pausar música' : 'Reproduzir música');
+        playBtn.innerHTML = `<i data-lucide="${isPlaying ? 'pause' : 'play'}" aria-hidden="true"></i>`;
         lucide.createIcons();
     }
+
+    audio.addEventListener('play', updatePlaybackUI);
+    audio.addEventListener('pause', updatePlaybackUI);
 
     // Carregar primeira faixa ao iniciar
     loadTrack(currentTrackIndex);
@@ -253,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Play / Pause Toggle
     if (playBtn) {
         playBtn.addEventListener('click', () => {
-            if (isPlaying) {
+            if (!audio.paused) {
                 pauseTrack();
             } else {
                 playTrack();
@@ -264,18 +269,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Próxima Música
     if (nextBtn) {
         nextBtn.addEventListener('click', () => {
+            const wasPlaying = !audio.paused;
             currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
             loadTrack(currentTrackIndex);
-            if (isPlaying) playTrack();
+            if (wasPlaying) playTrack();
         });
     }
 
     // Música Anterior
     if (prevBtn) {
         prevBtn.addEventListener('click', () => {
+            const wasPlaying = !audio.paused;
             currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
             loadTrack(currentTrackIndex);
-            if (isPlaying) playTrack();
+            if (wasPlaying) playTrack();
         });
     }
 
