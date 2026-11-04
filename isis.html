@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha querida, Ísis</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="isis.css">
+</head>
+<body data-theme="dark" class="access-locked">
+    <section id="access-screen" class="access-screen" aria-labelledby="access-title">
+        <form id="access-form" class="access-card">
+            <i data-lucide="lock-keyhole" class="access-icon" aria-hidden="true"></i>
+            <h1 id="access-title">Um cantinho só nosso</h1>
+            <p>Digite o PIN de 4 dígitos para entrar.</p>
+            <label for="access-pin">PIN</label>
+            <input id="access-pin" name="pin" type="password" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" required aria-describedby="access-status">
+            <button id="access-submit" class="btn btn-light" type="submit">Entrar</button>
+            <p id="access-status" class="access-status" role="status" aria-live="polite"></p>
+            <p id="access-config-notice" class="access-notice">Antes de usar, defina seu PIN de 4 dígitos em <code>isis.js</code>, na constante <code>ACCESS_PIN</code>.</p>
+            <p class="access-notice">Esta barreira ajuda contra acessos casuais. Como o site não tem servidor, o PIN e o conteúdo podem ser vistos por alguém que inspecione os arquivos.</p>
+        </form>
+    </section>
+
+    <div id="protected-content" hidden>
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">Minha querida, Ísis.</div>
+        <nav>
+            <ul>
+                <li><a href="#hero">Início</a></li>
+                <li><a href="#carta">Carta</a></li>
+                <li><a href="#historia">História</a></li>
+                <li><a href="#coisas">Memórias</a></li>
+                <li><a href="#musica">Nossas Músicas</a></li>
+                <li><a href="#estrelas"><i data-lucide="star" class="icon-sm"></i></a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Ativar modo claro" aria-pressed="true" title="Ativar modo claro">
+                        <i data-lucide="sun" class="icon-sm"></i>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 1. Seção Hero (Com foto de fundo e sobreposição escura) -->
+    <section id="hero" class="section hero-section dark-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Minha querida, Ísis.</h1>
+            <p class="subtitle">"Fiz isso porque algumas coisas merecem existir além das palavras."</p>
+            <a href="#carta" class="btn btn-light">Entrar &rarr;</a>
+        </div>
+    </section>
+
+    <!-- 2. Seção Carta com Envelope -->
+    <section id="carta" class="section light-bg">
+        <div class="envelope-container">
+            <div class="envelope-card">
+                <h3>Minha querida, Ísis.</h3>
+                <p>Esta é a primeira vez que escrevo uma carta de amor amando tão visceralmente que parece que meu peito não comporta tantas emoções. Por inúmeras vezes, tentei encontrar uma justificativa para tudo isso. Procurei alguma explicação lógica que me dissesse por que tanto amor transborda do meu peito. E, finalmente, descobri o motivo: você. É por isso que escrevo cartas de amor, dedico músicas, distribuo beijos e abraço você sempre que posso. Porque você é, em todos os sentidos, logicamente fascinante. Não existe uma única possibilidade em que eu não me apaixonaria por você. Amo sua inteligência, seu modo de agir, sua risada, sua timidez e sua gentileza. Amo os detalhes que fazem de você quem é. Amo você. E, mesmo sendo péssima com as palavras, continuo tentando. Tento encontrar, em cada frase, em cada gesto e em cada pequena dedicação, uma maneira de fazer você compreender a imensidão do que sinto. Foi por isso que fiz este site: para guardar cada pedacinho do meu amor, cada demonstração de carinho e cada pequena coisa que me faz querer amar você. Para que, de alguma forma, você possa visitar este lugar e encontrar nele um pouquinho de tudo aquilo que nem sempre consigo dizer. Eu te amo.</p>
+                <p class="signature">Com carinho,<br><strong>Bee.</strong></p>
+            </div>
+            <div class="scroll-down">
+                <a href="#historia">Continuar lendo <br> <i data-lucide="chevron-down"></i></a>
+            </div>
+        </div>
+    </section>
+
+<!-- 3. Nossa História (Linha do Tempo Interativa com Fotos) -->
+    <section id="historia" class="section light-bg-2">
+        <h2>Nossa história</h2>
+        <p class="section-desc">Pequenos momentos que se tornaram tudo. Clique em um momento ou use os botões para navegar.</p>
+        
+        <div class="story-container">
+            <!-- Tópicos da Linha do Tempo (clicáveis) -->
+            <div class="timeline-nav">
+                <div class="timeline-step active" data-index="0">
+                    <div class="timeline-icon"><i data-lucide="star"></i></div>
+                    <div class="timeline-info">
+                        <h4>Antes de você</h4>
+                        <p>Eu era só eu e as minhas inquietações.</p>
+                    </div>
+                </div>
+                <div class="timeline-step" data-index="1">
+                    <div class="timeline-icon"><i data-lucide="message-circle"></i></div>
+                    <div class="timeline-info">
+                        <h4>Quando você apareceu</h4>
+                        <p>Era pra ser momentâneo, eu achei que não iria gostar tanto de alguém que me mandava emojis de animais extintos ou algo assim... Parece que eu me enganei.</p>
+                    </div>
+                </div>
+                <div class="timeline-step" data-index="2">
+                    <div class="timeline-icon"><i data-lucide="heart"></i></div>
+                    <div class="timeline-info">
+                        <h4>Quando percebi</h4>
+                        <p>Eu já te amava, e nem tinha percebido. Só procurava coragem pra te dizer.</p>
+                    </div>
+                </div>
+                <div class="timeline-step" data-index="3">
+                    <div class="timeline-icon"><i data-lucide="sparkles"></i></div>
+                    <div class="timeline-info">
+                        <h4>Agora</h4>
+                        <p>E aqui estamos. E ainda é só o começo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caixa Flutuante com a Imagem e Descrição ao Lado -->
+            <div class="story-display-card">
+                <div class="story-image-wrapper">
+                    <img id="story-img" src="Imagens/primeirodate.png" alt="Nossa História">
+                </div>
+                <div class="story-text-content">
+                    <span id="story-step-number" class="story-badge">Momento 1 de 4</span>
+                    <h3 id="story-title">Antes de você</h3>
+                    <p id="story-desc">Era apenas eu. Eu e minhas inquietações. Mas agora, tudo é diferente.</p>
+                    
+                    <!-- Botões de Navegação -->
+                    <div class="story-nav-buttons">
+                        <button id="story-prev-btn" class="btn-story-nav" type="button"><i data-lucide="chevron-left"></i> Anterior</button>
+                        <button id="story-next-btn" class="btn-story-nav" type="button">Próximo <i data-lucide="chevron-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 4. Coisas que me fazem lembrar você -->
+    <section id="coisas" class="section light-bg">
+        <h2>Coisas que me fazem lembrar você</h2>
+        <p class="section-desc">São nas pequenas coisas que você se esconde</p>
+
+        <div class="cards-grid">
+            <div class="card">
+                <i data-lucide="star" class="card-icon"></i>
+                <h3>Estrelas</h3>
+                <p>Brilhantes e distantemente presentes.</p>
+            </div>
+            <div class="card">
+                <i data-lucide="music" class="card-icon"></i>
+                <h3>Uma música</h3>
+                <p>Namora Comigo - Mart'nália "Fica comigo, namora comigo..."</p>
+            </div>
+            <div class="card">
+                <i data-lucide="candy" class="card-icon"></i>
+                <h3>Doces</h3>
+                <p>Você me lembra um pudim morno com bastante calda de caramelo.</p>
+            </div>
+            <div class="card">
+                <i data-lucide="coffee" class="card-icon"></i>
+                <h3>Café</h3>
+                <p>Me deixa enérgica, animada, disposta a fazer tudinho.</p>
+            </div>
+            <div class="card">
+                <i data-lucide="book-open" class="card-icon"></i>
+                <h3>Um poema</h3>
+                <p>Soneto do amor total - Vinicius de Moraes</p>
+            </div>
+            <div class="card">
+                <i data-lucide="flower-2" class="card-icon"></i>
+                <h3>Uma flor</h3>
+                <p>não-me-esqueças</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Nossa Música (Player Funcional) -->
+    <section id="musica" class="section light-bg-2">
+        <h2>Nossas músicas</h2>
+        <p class="section-desc">Porque tem som que parece feito para nós.</p>
+
+        <!-- Elemento de áudio escondido controlado pelo JS -->
+        <audio id="audio-player"></audio>
+
+        <div class="player-card">
+            <div class="vinyl-record">
+                <div class="vinyl-inner"></div>
+            </div>
+            <div class="player-info">
+                <h3 id="song-title">Dengo</h3>
+                <p class="artist" id="song-artist">ANAVITÓRIA</p>
+                
+                <div class="progress-container">
+                    <span id="current-time">0:00</span>
+                    <input type="range" id="progress-bar" value="0" max="100">
+                    <span id="duration">0:00</span>
+                </div>
+
+                <div class="player-controls">
+                    <button class="control-btn" id="prev-btn"><i data-lucide="skip-back"></i></button>
+                    <button class="control-btn play-btn" id="play-pause-btn"><i data-lucide="play" id="play-icon"></i></button>
+                    <button class="control-btn" id="next-btn"><i data-lucide="skip-forward"></i></button>
+                    <button class="control-btn heart-btn"><i data-lucide="heart"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <p class="music-quote">
+            <em id="song-quote">Essa música me lembra o quanto o seu carinho me traz paz.</em>
+        </p>
+    </section>
+
+    <!-- 6. Para quando sentir saudade (8 Cartas/Envelopes Interativos) -->
+    <section id="saudade" class="section light-bg">
+        <h2>Para quando sentir saudade</h2>
+        <p class="section-desc">Abra um envelope. Eu estarei aqui.</p>
+
+        <div class="envelopes-grid">
+            <div class="envelope-item" data-message="Lembre-se de que nada dura para sempre, nem mesmo os dias ruins. Mas eu sempre estarei aqui por você!">
+                <i data-lucide="mail"></i>
+                <p>Abra quando estiver triste</p>
+            </div>
+            <div class="envelope-item" data-message="Mesmo longe de ti, ainda penso em você a cada instante. Sinto sua falta e mal posso esperar para te ver de novo!">
+                <i data-lucide="heart"></i>
+                <p>Abra quando sentir saudade</p>
+            </div>
+            <div class="envelope-item" data-message="Me ligue, quero escutar você. Vamos tomar um sorvete, ficar de dengo em silêncio, ou apenas conversar sobre tudo e nada. Estou aqui para você.">
+                <i data-lucide="cloud"></i>
+                <p>Abra quando tiver um dia ruim</p>
+            </div>
+            <div class="envelope-item" data-message="Eu amo tudo em você. As vezes me pego imitando seus gestos, seu jeito de falar, e até mesmo seu sorriso. Você é única e especial para mim.">
+                <i data-lucide="star"></i>
+                <p>Abra quando quiser lembrar que é amada</p>
+            </div>
+            <div class="envelope-item" data-message="Você é incrível, Isi. Cada passo seu é uma vitória nossa, pois suas conquistas me enchem de orgulho.">
+                <i data-lucide="shield"></i>
+                <p>Abra quando precisar de forças</p>
+            </div>
+            <div class="envelope-item" data-message="Eu te amo. Eu te amo. Eu te amo. Eu te amo. Eu te amo. Eu te amo. Eu te amo. Sempre.">
+                <i data-lucide="smile"></i>
+                <p>Abra quando quiser só ler um "eu te amo"</p>
+            </div>
+            
+            <div class="envelope-item" data-message="Eu te amo mais que uma bomba hidráulica com um sistema de pistões. Eu te amo mais que Frozen. Eu te amo mais que Bruce lee, Resident Evil, e até mesmo mais que o Lula. Eu te amo, Ísis.">
+                <i data-lucide="sun"></i>
+                <p>Abra quando precisar de um sorriso</p>
+            </div>
+            <div class="envelope-item" data-message="Respire fundo, feche os olhos, vai dar tudo certo e quando der vamos sair para comemorar. Eu estarei aqui, sempre, para te apoiar.">
+                <i data-lucide="sparkles"></i>
+                <p>Abra antes de um momento importante</p>
+            </div>
+        </div>
+        <p class="footer-note">Você pode voltar sempre. <i data-lucide="star" class="icon-sm"></i></p>
+    </section>
+
+    <!-- 7. As estrelas também sentem -->
+    <section id="estrelas" class="section dark-bg sky-section">
+        <div class="sky-overlay"></div>
+        <div class="sky-content">
+            <h2>As estrelas também sentem</h2>
+            <p class="section-desc">Clique em uma estrela e descubra o que ela tem a dizer.</p>
+
+            <div class="stars-container">
+                <i data-lucide="star" class="sky-star star-1" data-title="Uma coisa que admiro em você:" data-quote="Sua inteligência, eu amo escutar você explicando as coisas, sempre seguindo uma linha de raciocínio concreta."></i>
+                <i data-lucide="star" class="sky-star star-2" data-title="O que eu mais amo em você:" data-quote="Eu amo você por completo, mas adimiro muito seus gestos. Amo o jeito que você gesticula e balança ao falar."></i>
+                <i data-lucide="star" class="sky-star star-3" data-title="Sobre o seu jeito de ver o mundo:" data-quote="Você é doce e gentil, não briga e nem grita. Uma pessoa como eu acha esse modo de ser encantador."></i>
+                <i data-lucide="star" class="sky-star star-4" data-title="Um som favorito:" data-quote="A sua risada infantil. É simplesmente a minha melodia favorita no mundo inteiro."></i>
+                <i data-lucide="star" class="sky-star star-5" data-title="Um pensamento constante:" data-quote="Você. Você por inteiro. Você comigo. Você. Você. Você."></i>
+            </div>
+        </div>
+
+        <!-- Modal de Recado da Estrela com Animação -->
+        <div id="star-modal" class="modal hidden">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h4 id="star-modal-title">Uma coisa que admiro em você:</h4>
+                <p id="star-quote-text">Sua inteligência, eu amo escutar você explicando as coisas, sempre seguindo uma linha de raciocínio concreta.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. Um detalhe só nosso (Polaroid + Cartinha Especial) -->
+    <section id="porque" class="section light-bg">
+        <h2>Um detalhe só nosso</h2>
+        <p class="section-desc">Guardo esse instante com todo o carinho do mundo.</p>
+
+        <div class="polaroid-section-container">
+            <!-- Foto estilo Polaroid -->
+            <div class="polaroid-card">
+                <div class="polaroid-img-wrapper">
+                    <img src="Imagens/polaroid.png" alt="Nosso desenho em Polaroid">
+                </div>
+                <p class="polaroid-caption">Nós duas ♡</p>
+            </div>
+
+            <!-- Cartinha de Acompanhamento -->
+            <a class="special-letter-card special-letter-link" href="https://youtu.be/5zGSovw36iE?si=AoM7BRfrZxVASJy9" target="_blank" rel="noopener noreferrer" aria-label="Escutar a nossa música no YouTube, em uma nova aba">
+                <div class="letter-badge"><i data-lucide="music" class="icon-sm"></i> Amor Dos Deuses</div>
+                <h3>Você é a minha pessoa favorita</h3>
+                <p class="special-letter-text">
+                    "Eu amo você, repetimos isso várias vezes ao dia, porém não parece ser suficiente, se somar não vai dar um valor proporcional ao sentimento. Não vai. Eu amo você. Muito."
+                </p>
+                <div class="letter-song-quote">
+                    <i data-lucide="quote" class="quote-icon"></i>
+                    <span>"Queria ser a pele do seu corpo, pra estar junto com você a todo tempo..."</span>
+                </div>
+                <span class="special-letter-cta">
+                    <i data-lucide="play-circle"></i>
+                    Escutar a nossa música
+                    <i data-lucide="arrow-up-right" class="special-letter-arrow"></i>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- 9. Final / Declaração (Com carrossel de fundo em transição suave) -->
+    <section id="final" class="section dark-bg final-section">
+        <!-- Container das imagens de fundo para o carrossel -->
+        <div class="bg-slideshow">
+            <div class="slide active" style="background-image: url('Imagens/primeirafoto.png');"></div>
+            <div class="slide" style="background-image: url('Imagens/deitadas.png');"></div>
+            <div class="slide" style="background-image: url('Imagens/NosDuas.png');"></div>
+            <div class="slide" style="background-image: url('Imagens/parque.png');"></div>
+            <div class="slide" style="background-image: url('Imagens/felicidade.png');"></div>
+            <div class="slide" style="background-image: url('Imagens/nupcias.png');"></div>
+            <div class="slide" style="background-image: url('Imagens/onibus.png');"></div>
+            <div class="slide" style="background-image: url('Imagens/polaroid.png');"></div>
+            <div class="slide" style="background-image: url('Imagens/primeirodate.png');"></div>
+        </div>
+
+        <!-- Camada escura por cima para dar leitura ao texto -->
+        <div class="final-overlay"></div>
+
+        <!-- Conteúdo principal -->
+        <div class="final-content">
+            <p class="final-intro">E se você chegou até aqui...</p>
+            <p class="final-sub">...eu só queria te dizer uma última coisa.</p>
+
+            <h1 class="love-title">Eu te amo.</h1>
+            <p class="thank-you">Obrigada por existir na minha vida.</p>
+
+            <div class="heart-icon-lg"><i data-lucide="heart"></i></div>
+
+            <a href="#hero" class="btn btn-outline"><i data-lucide="rotate-ccw"></i> Voltar ao início</a>
+        </div>
+    </section>
+
+    <script src="isis.js"></script>
+
+    <!-- Modal de Cartinha para os Envelopes -->
+    <div id="envelope-modal" class="modal hidden">
+        <div class="modal-content envelope-letter-content">
+            <span class="close-modal close-envelope">&times;</span>
+            <div class="letter-paper">
+                <h4 id="envelope-modal-title">Para quando sentir saudade...</h4>
+                <p id="envelope-quote-text">Mensagem da cartinha...</p>
+                <span class="letter-signature">Com todo meu amor, A.</span>
+            </div>
+        </div>
+    </div> 
+
+    </div>
+</body>
+</html>

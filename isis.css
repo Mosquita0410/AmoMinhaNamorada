@@ -1,0 +1,1295 @@
+/* ==========================================
+   PALETA DE CORES E VARIÁVEIS
+   ========================================== */
+:root {
+    color-scheme: dark;
+    --bg-dark: #0b1412;
+    --bg-dark-card: #172522;
+    --bg-light-1: #111d1a;
+    --bg-light-2: #162622;
+    --bg-card: #1d302b;
+    --text-dark: #e2eee8;
+    --text-light: #f3f7f4;
+    --text-on-dark: #f3f7f4;
+    --accent-green: #8ac9aa;
+    --accent-hover: #a5dabb;
+    --border-color: #344d43;
+    --navbar-bg: rgba(11, 20, 18, 0.94);
+    --shadow-soft: rgba(0, 0, 0, 0.24);
+    --surface-hover: #294138;
+    --button-light-bg: #e2eee8;
+    --button-light-text: #14221e;
+    --button-light-hover: #ffffff;
+    --letter-paper: #1b2b26;
+    --letter-paper-lines: #24372f;
+    --letter-paper-text: #e2eee8;
+    
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+[data-theme="light"] {
+    color-scheme: light;
+    --bg-dark: #edf3f0;
+    --bg-dark-card: #e0f0e6;
+    --bg-light-1: #f8faf9;
+    --bg-light-2: #e7f2ee;
+    --bg-card: #ffffff;
+    --text-dark: #1a2d2b;
+    --text-light: #1f2e2c;
+    --text-on-dark: #f3f7f4;
+    --accent-green: #2d6a5b;
+    --accent-hover: #215444;
+    --border-color: rgba(29, 50, 45, 0.16);
+    --navbar-bg: rgba(255, 255, 255, 0.92);
+    --shadow-soft: rgba(30, 58, 52, 0.12);
+    --surface-hover: #edf5f1;
+    --button-light-bg: #f8faf9;
+    --button-light-text: #1a2d2b;
+    --button-light-hover: #edf5f1;
+    --letter-paper: #fcf8f2;
+    --letter-paper-lines: #eae3d2;
+    --letter-paper-text: #1f332b;
+}
+
+/* Base resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    background-color: var(--bg-light-1);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita rolagem lateral indesejada */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--navbar-bg);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.navbar .logo {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.navbar nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.2rem;
+    align-items: center;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-size: 0.85rem;
+    transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+    color: var(--accent-hover);
+}
+
+.theme-toggle {
+    width: 2.2rem;
+    height: 2.2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-dark);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--surface-hover);
+    transform: translateY(-1px);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--accent-green);
+    outline-offset: 3px;
+}
+
+/* Layout de Seções */
+.section {
+    min-height: 100vh;
+    padding: 6rem 1.5rem 4rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.dark-bg {
+    background-color: var(--bg-dark);
+    color: var(--text-on-dark);
+}
+
+.light-bg {
+    background-color: var(--bg-light-1);
+    color: var(--text-dark);
+}
+
+.light-bg-2 {
+    background-color: var(--bg-light-2);
+    color: var(--text-dark);
+}
+
+/* Tipografia Geral */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.section-desc {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 0.7rem 1.8rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-light {
+    background-color: var(--button-light-bg);
+    color: var(--button-light-text);
+}
+
+.btn-light:hover {
+    background-color: var(--button-light-hover);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 1px solid var(--text-on-dark);
+    color: var(--text-on-dark);
+}
+
+.btn-outline:hover {
+    background-color: var(--text-on-dark);
+    color: var(--bg-dark);
+}
+
+/* Seção 1: Hero com Fundo de Foto e Overlay */
+.hero-section {
+    position: relative;
+    background-image: url('Imagens/primeirodate.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Barreira / Camada escura com opacidade sobre a foto */
+.hero-section .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 20, 18, 0.75); /* Controla o escurecido (quanto maior o último número, mais escuro fica) */
+    z-index: 1;
+}
+
+/* Garante que o texto fique por cima da camada escura */
+.hero-section .hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    font-style: italic;
+    color: var(--text-on-dark);
+}
+
+.hero-section .subtitle {
+    font-style: italic;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    color: var(--text-on-dark);
+    max-width: 90%;
+}
+
+/* Seção 2: Carta com Envelope */
+.envelope-card {
+    background-color: var(--bg-card);
+    padding: 2.5rem 1.5rem;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 10px 25px var(--shadow-soft);
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.envelope-card h3 {
+    font-style: italic;
+}
+
+.envelope-card .signature {
+    margin-top: 1.5rem;
+    text-align: right;
+    font-style: italic;
+}
+
+.scroll-down {
+    margin-top: 2rem;
+}
+
+.scroll-down a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+/* Seção 3: Linha do Tempo */
+.timeline {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: left;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background-color: var(--bg-light-1);
+    padding: 1.2rem;
+    border-radius: 10px;
+}
+
+.timeline-icon {
+    background-color: var(--bg-card);
+    padding: 0.6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Seção 4: Cards de Memórias */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards por linha no computador */
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 900px;
+}
+
+.card {
+    background-color: var(--bg-card);
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    transition: transform 0.3s;
+    color: var(--text-dark);
+    box-shadow: 0 10px 22px var(--shadow-soft);
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card-icon {
+    width: 28px;
+    height: 28px;
+    margin-bottom: 0.8rem;
+    color: var(--accent-green);
+}
+
+/* Seção 5: Player de Música */
+.player-card {
+    background-color: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 550px;
+    width: 100%;
+    color: var(--text-dark);
+    box-shadow: 0 10px 22px var(--shadow-soft);
+}
+
+.vinyl-record {
+    width: 80px;
+    height: 80px;
+    background-color: #111;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    animation: spin 8s linear infinite;
+    animation-play-state: paused;
+}
+
+.vinyl-record.playing {
+    animation-play-state: running;
+}
+
+.vinyl-inner {
+    width: 28px;
+    height: 28px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}
+
+.player-info {
+    flex: 1;
+    text-align: left;
+    width: 100%;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    margin: 0.8rem 0;
+}
+
+.progress-container input[type="range"] {
+    flex: 1;
+    accent-color: var(--accent-green);
+}
+
+.player-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-dark);
+}
+
+.play-btn {
+    background-color: var(--accent-green);
+    color: var(--bg-dark);
+    padding: 0.6rem;
+    border-radius: 50%;
+    display: flex;
+}
+
+.music-quote {
+    margin-top: 2rem;
+    font-size: 0.85rem;
+    max-width: 450px;
+}
+
+/* Seção 6: Cartas de Saudade (4 por linha no computador) */
+.envelopes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 caixinhas por linha */
+    gap: 1.5rem;
+    max-width: 900px;
+    width: 100%;
+}
+
+.envelope-item {
+    background-color: var(--bg-card);
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 1px dashed var(--accent-green);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.envelope-item:hover {
+    background-color: var(--surface-hover);
+    transform: translateY(-4px);
+}
+
+@media (max-width: 768px) {
+    .envelopes-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas no telemóvel */
+    }
+}
+
+@media (max-width: 400px) {
+    .envelopes-grid {
+        grid-template-columns: 1fr; /* 1 coluna em ecrãs muito pequenos */
+    }
+}
+
+/* ==========================================
+   SEÇÃO DE ESTRELAS COM FUNDO DE FOTO
+   ========================================== */
+.sky-section {
+    position: relative;
+    background-image: url('Imagens/felicidade.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Camada escura translúcida por cima da foto */
+.sky-section .sky-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 20, 18, 0.8); /* Controla o quão escuro fica para destacar o texto */
+    z-index: 1;
+}
+
+/* Mantém o conteúdo e as estrelas acima da camada escura */
+.sky-section .sky-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* ==========================================
+   SEÇÃO DE ESTRELAS COM FUNDO DE FOTO E ANIMAÇÕES
+   ========================================== */
+.sky-section {
+    position: relative;
+    background-image: url('Imagens/felicidade.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* Camada escura translúcida por cima da foto */
+.sky-section .sky-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 20, 18, 0.82);
+    z-index: 1;
+}
+
+/* Mantém o conteúdo e as estrelas acima da camada escura */
+.sky-section .sky-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* Container e Animações das Estrelas */
+.stars-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.sky-star {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    color: #ffffff;
+    transition: transform 0.3s ease, color 0.3s ease, filter 0.3s ease;
+    animation: twinkle 2.5s infinite ease-in-out alternate;
+}
+
+/* Intervalos alternados para as estrelas piscarem em momentos diferentes */
+.star-1 { animation-delay: 0s; }
+.star-2 { animation-delay: 0.5s; }
+.star-3 { animation-delay: 1s; }
+.star-4 { animation-delay: 1.5s; }
+.star-5 { animation-delay: 2s; }
+
+/* Efeito de Hover nas Estrelas */
+.sky-star:hover {
+    transform: scale(1.35) rotate(12deg);
+    color: #f1c40f;
+    filter: drop-shadow(0 0 8px #f1c40f);
+}
+
+/* Animação Keyframes de Brilho/Pulsação */
+@keyframes twinkle {
+    0% {
+        opacity: 0.4;
+        transform: scale(0.9);
+        filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.3));
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1.1);
+        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+    }
+}
+
+/* ==========================================
+   ANIMAÇÃO DE ABERTURA DO MODAL DA ESTRELA
+   ========================================== */
+
+/* Quando o modal perde a classe hidden, ele ativa a animação */
+.modal:not(.hidden) .modal-content {
+    animation: modalPopIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes modalPopIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.7) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Transição suave para o fundo escuro do modal */
+.modal {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal:not(.hidden) {
+    opacity: 1;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 2000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: var(--bg-dark-card);
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    border: 1px solid var(--accent-green);
+    color: var(--text-light);
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Seção 8: Lista Por que você */
+.reasons-list {
+    list-style: none;
+    text-align: left;
+    max-width: 450px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.reasons-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+}
+
+.final-reason {
+    margin-top: 2rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+/* Seção 9: Final */
+.love-title {
+    font-size: 2.8rem;
+    font-style: italic;
+    margin: 1rem 0;
+}
+
+.heart-icon-lg {
+    margin: 1.5rem 0;
+}
+
+.heart-icon-lg svg {
+    width: 45px;
+    height: 45px;
+    color: #e74c3c;
+}
+
+.icon-sm {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+}
+
+/* ==========================================
+   AJUSTES RESPONSIVOS (CELULAR / MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .navbar nav ul {
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .navbar nav a {
+        font-size: 0.75rem;
+    }
+
+    .section {
+        padding: 5rem 1rem 3rem 1rem;
+    }
+
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .love-title {
+        font-size: 2.2rem;
+    }
+
+    .player-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .player-info {
+        text-align: center;
+    }
+
+    .player-controls {
+        justify-content: center;
+    }
+
+    .cards-grid, .envelopes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .cards-grid, .envelopes-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================
+   ESTILOS DA HISTÓRIA INTERATIVA
+   ========================================== */
+.story-container {
+    display: flex;
+    gap: 2.5rem;
+    max-width: 1050px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+}
+
+.timeline-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+
+.timeline-step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--bg-light-1);
+    padding: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.timeline-step:hover {
+    background-color: var(--surface-hover);
+    transform: translateX(4px);
+}
+
+.timeline-step.active {
+    background-color: var(--bg-card);
+    border-color: var(--accent-green);
+    box-shadow: 0 4px 15px var(--shadow-soft);
+}
+
+.timeline-icon {
+    background-color: var(--bg-card);
+    padding: 0.6rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent-green);
+}
+
+.timeline-info h4 {
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+}
+
+.timeline-info p {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Card Flutuante de Exibição */
+.story-display-card {
+    background-color: var(--bg-card);
+    border-radius: 16px;
+    padding: 2rem;
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    box-shadow: 0 10px 30px var(--shadow-soft);
+    border: 1px solid var(--border-color);
+}
+
+.story-image-wrapper {
+    width: 100%;
+    height: 240px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #111;
+}
+
+.story-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.story-text-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.story-badge {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+.story-text-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.story-text-content p {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    line-height: 1.5;
+}
+
+/* Botões de Avançar/Voltar na História */
+.story-nav-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.btn-story-nav {
+    background-color: var(--bg-light-1);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-dark);
+    transition: all 0.2s;
+}
+
+.btn-story-nav:hover {
+    background-color: var(--accent-green);
+    color: var(--bg-dark);
+    border-color: var(--accent-green);
+}
+
+/* Responsivo para celular */
+@media (max-width: 768px) {
+    .story-container {
+        flex-direction: column;
+    }
+}
+
+/* Importando uma fonte cursiva elegante do Google Fonts para as cartinhas */
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap');
+
+/* ==========================================
+   ESTILO DA CARTINHA DOS ENVELOPES
+   ========================================== */
+.envelope-letter-content {
+    background-color: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    max-width: 420px !important;
+    width: 90% !important;
+}
+
+.letter-paper {
+    background-color: var(--letter-paper);
+    color: var(--letter-paper-text);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    border: 1px solid var(--border-color);
+    text-align: left;
+    position: relative;
+    background-image: repeating-linear-gradient(var(--letter-paper), var(--letter-paper) 28px, var(--letter-paper-lines) 28px, var(--letter-paper-lines) 29px);
+}
+
+.letter-paper h4 {
+    font-family: var(--font-heading);
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--accent-green);
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.letter-paper p {
+    font-family: 'Caveat', cursive; /* Fonte cursiva manuscrita */
+    font-size: 1.6rem; /* Tamanho legível e charmoso para fonte cursiva */
+    line-height: 1.5;
+    color: var(--letter-paper-text);
+    margin-bottom: 1.5rem;
+}
+
+.letter-signature {
+    display: block;
+    text-align: right;
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: var(--accent-green);
+    font-weight: 700;
+}
+
+/* Botão de fechar adaptado para a cartinha */
+.close-envelope {
+    color: var(--letter-paper-text) !important;
+    top: 15px !important;
+    right: 20px !important;
+    z-index: 10;
+}
+
+/* ==========================================
+   SEÇÃO POLAROID + CARTINHA ESPECIAL
+   ========================================== */
+.polaroid-section-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 950px;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Polaroid Clássica */
+.polaroid-card {
+    background-color: #ffffff;
+    padding: 1.2rem 1.2rem 2rem 1.2rem;
+    border-radius: 4px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    transform: rotate(-3deg);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    max-width: 300px;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.polaroid-card:hover {
+    transform: rotate(0deg) scale(1.03);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.polaroid-img-wrapper {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    background-color: #f4f4f4;
+    border: 1px solid #eee;
+}
+
+.polaroid-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.polaroid-caption {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem;
+    color: #333;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Cartinha ao Lado da Polaroid */
+.special-letter-card {
+    background-color: var(--bg-card);
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    text-align: left;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 25px var(--shadow-soft);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.special-letter-link {
+    color: inherit;
+    text-decoration: none;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.special-letter-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 34px var(--shadow-soft);
+    border-color: var(--accent-green);
+}
+
+.special-letter-link:focus-visible {
+    outline: 3px solid var(--accent-green);
+    outline-offset: 4px;
+}
+
+.special-letter-cta {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 0.55rem;
+    margin-top: 0.35rem;
+    color: var(--accent-green);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.special-letter-cta svg {
+    width: 18px;
+    height: 18px;
+}
+
+.special-letter-arrow {
+    transition: transform 0.2s ease;
+}
+
+.special-letter-link:hover .special-letter-arrow {
+    transform: translate(2px, -2px);
+}
+
+.letter-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent-green);
+    font-weight: 600;
+}
+
+.special-letter-card h3 {
+    font-size: 1.8rem;
+    color: var(--text-dark);
+    margin-bottom: 0.2rem;
+}
+
+.special-letter-text {
+    font-family: 'Caveat', cursive;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    color: var(--text-dark);
+}
+
+.letter-song-quote {
+    margin-top: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    background-color: var(--surface-hover);
+    border-left: 3px solid var(--accent-green);
+    border-radius: 6px;
+    font-style: italic;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--accent-green);
+}
+
+.quote-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* Ajustes no celular */
+@media (max-width: 768px) {
+    .polaroid-section-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .polaroid-card {
+        transform: rotate(0deg);
+        max-width: 280px;
+    }
+
+    .special-letter-card {
+        width: 100%;
+        padding: 1.8rem 1.5rem;
+    }
+}
+
+/* ==========================================
+   SEÇÃO FINAL COM CARROSSEL DE FUNDO INFINITO
+   ========================================== */
+.final-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Container que segura todas as fotos empilhadas */
+.bg-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* Estilo individual de cada slide */
+.bg-slideshow .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.8s ease-in-out; /* Velocidade da transição de esmaecer */
+}
+
+/* Slide ativo (visível) */
+.bg-slideshow .slide.active {
+    opacity: 1;
+}
+
+/* Barreira escura translúcida sobre as fotos */
+.final-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 20, 18, 0.78); /* Ajuste para mais ou menos escuro */
+    z-index: 2;
+}
+
+/* Conteúdo acima do fundo */
+.final-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body.access-locked {
+    overflow: hidden;
+}
+
+#access-screen[hidden] {
+    display: none;
+}
+
+.access-screen {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 1.5rem;
+    background:
+        linear-gradient(rgba(10, 20, 18, 0.78), rgba(10, 20, 18, 0.88)),
+        url('Imagens/primeirodate.png') center / cover no-repeat;
+}
+
+.access-card {
+    width: min(100%, 420px);
+    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    color: var(--text-dark);
+    background-color: var(--bg-dark-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.access-icon {
+    width: 2rem;
+    height: 2rem;
+    color: var(--accent-green);
+}
+
+.access-card h1 {
+    margin-bottom: 0;
+    font-size: 1.8rem;
+}
+
+.access-card label {
+    align-self: flex-start;
+    margin-bottom: -0.75rem;
+    font-size: 0.9rem;
+}
+
+.access-card input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: var(--bg-light-1);
+    color: var(--text-dark);
+    font: inherit;
+    font-size: 1.4rem;
+    letter-spacing: 0.6rem;
+    text-align: center;
+}
+
+.access-card input:focus-visible {
+    outline: 2px solid var(--accent-green);
+    outline-offset: 3px;
+}
+
+.access-card button {
+    border: 0;
+    font: inherit;
+}
+
+.access-card button:disabled,
+.access-card input:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.access-status {
+    min-height: 1.5em;
+    color: #ffb8b8;
+    font-size: 0.85rem;
+}
+
+.access-notice {
+    font-size: 0.75rem;
+    opacity: 0.75;
+}
+
+@media (max-width: 480px) {
+    .access-card {
+        padding: 2rem 1.25rem;
+    }
+}
