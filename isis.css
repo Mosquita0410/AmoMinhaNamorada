@@ -808,14 +808,13 @@ h2 {
     background-color: var(--bg-light-1);
     padding: 1rem;
     border-radius: 12px;
-    cursor: pointer;
+    cursor: default;
     border: 2px solid transparent;
     transition: all 0.3s ease;
 }
 
 .timeline-step:hover {
-    background-color: var(--surface-hover);
-    transform: translateX(4px);
+    background-color: var(--bg-light-1);
 }
 
 .timeline-step.active {
@@ -928,6 +927,11 @@ h2 {
     background-color: var(--accent-green);
     color: var(--bg-dark);
     border-color: var(--accent-green);
+}
+
+.btn-story-nav:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 /* Responsivo para celular */

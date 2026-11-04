@@ -441,20 +441,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 step.classList.remove('active');
             }
         });
-    }
 
-    // Clique direto em cada tópico da lista lateral
-    timelineSteps.forEach((step, index) => {
-        step.addEventListener('click', () => {
-            updateStory(index);
-        });
-    });
+        if (storyPrevBtn) storyPrevBtn.disabled = index === 0;
+        if (storyNextBtn) storyNextBtn.disabled = index === storyData.length - 1;
+    }
 
     // Botão Próximo
     if (storyNextBtn) {
         storyNextBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            currentStoryIndex = (currentStoryIndex + 1) % storyData.length;
+            currentStoryIndex = Math.min(currentStoryIndex + 1, storyData.length - 1);
             updateStory(currentStoryIndex);
         });
     }
@@ -463,7 +459,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (storyPrevBtn) {
         storyPrevBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            currentStoryIndex = (currentStoryIndex - 1 + storyData.length) % storyData.length;
+            currentStoryIndex = Math.max(currentStoryIndex - 1, 0);
             updateStory(currentStoryIndex);
         });
     }
@@ -481,8 +477,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Remove a classe active da foto atual
             slides[currentSlideIndex].classList.remove('active');
 
-            // Avança para a próxima foto (ou volta para a primeira se chegar ao fim)
-            currentStoryIndex = (currentSlideIndex + 1) % slides.length;
             currentSlideIndex = (currentSlideIndex + 1) % slides.length;
 
             // Adiciona a classe active na nova foto
