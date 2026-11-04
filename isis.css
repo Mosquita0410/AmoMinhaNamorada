@@ -768,19 +768,31 @@ h2 {
    ========================================== */
 .story-container {
     display: flex;
-    gap: 2.5rem;
-    max-width: 1050px;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 760px;
     width: 100%;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
     text-align: left;
 }
 
 .timeline-nav {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    flex: 1;
+    gap: 0.65rem;
+    width: 100%;
+}
+
+.timeline-nav::before {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    bottom: 2.5rem;
+    left: 2.45rem;
+    width: 2px;
+    background-color: var(--border-color);
+    pointer-events: none;
 }
 
 .timeline-step {
@@ -798,17 +810,6 @@ h2 {
     font: inherit;
     text-align: left;
     transition: all 0.3s ease;
-}
-
-.timeline-step:not(:last-child)::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 2.45rem;
-    width: 2px;
-    height: 1rem;
-    background-color: var(--border-color);
-    pointer-events: none;
 }
 
 .timeline-step:hover {
@@ -851,7 +852,7 @@ h2 {
     background-color: var(--bg-card);
     border-radius: 16px;
     padding: 2rem;
-    flex: 1.2;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
