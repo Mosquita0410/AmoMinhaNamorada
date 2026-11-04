@@ -1293,3 +1293,76 @@ body.access-locked {
         padding: 2rem 1.25rem;
     }
 }
+
+/* ==========================================
+   CORREÇÃO DE RESPONSIVIDADE PARA CELULAR
+   ========================================== */
+@media (max-width: 768px) {
+    /* Ajustar espaçamento geral das seções */
+    .section {
+        padding: 3rem 1.2rem;
+    }
+
+    /* 1. Seção da História: empilhar com respiro */
+    .story-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .timeline-nav {
+        width: 100%;
+    }
+
+    .story-display-card {
+        width: 100%;
+        padding: 1.2rem;
+    }
+
+    .story-image-wrapper {
+        height: 200px; /* Altura ideal para telas menores */
+    }
+
+    /* 2. Seção da Polaroid + Cartinha (Garantir ordem certa e respiro) */
+    .polaroid-section-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .polaroid-card {
+        transform: rotate(0deg);
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    .special-letter-card {
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    /* 3. Ajuste dos Envelopes (2 colunas bem espaçadas) */
+    .envelopes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .envelope-item {
+        padding: 1rem 0.5rem;
+    }
+
+    .envelope-item p {
+        font-size: 0.8rem;
+    }
+
+    /* 4. Títulos e textos para não ficarem colados nas bordas */
+    h2 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    .section-desc {
+        text-align: center;
+        padding: 0 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+}
