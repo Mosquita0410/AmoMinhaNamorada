@@ -784,20 +784,35 @@ h2 {
 }
 
 .timeline-step {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 1rem;
+    width: 100%;
     background-color: var(--bg-light-1);
     padding: 1rem;
     border-radius: 12px;
     cursor: pointer;
     border: 2px solid transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
     transition: all 0.3s ease;
+}
+
+.timeline-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 2.45rem;
+    width: 2px;
+    height: 1rem;
+    background-color: var(--border-color);
+    pointer-events: none;
 }
 
 .timeline-step:hover {
     background-color: var(--surface-hover);
-    transform: translateX(4px);
 }
 
 .timeline-step.active {
@@ -910,6 +925,17 @@ h2 {
     background-color: var(--accent-green);
     color: var(--bg-dark);
     border-color: var(--accent-green);
+}
+
+.btn-story-nav:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.btn-story-nav:disabled:hover {
+    background-color: var(--bg-light-1);
+    color: var(--text-dark);
+    border-color: var(--border-color);
 }
 
 /* Responsivo para celular */

@@ -414,6 +414,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const storyNextBtn = document.getElementById('story-next-btn');
 
     function updateStory(index) {
+        if (index < 0 || index >= storyData.length) return;
+
         currentStoryIndex = index;
         const data = storyData[index];
 
@@ -437,10 +439,15 @@ document.addEventListener('DOMContentLoaded', () => {
         timelineSteps.forEach((step, i) => {
             if (i === index) {
                 step.classList.add('active');
+                step.setAttribute('aria-current', 'step');
             } else {
                 step.classList.remove('active');
+                step.removeAttribute('aria-current');
             }
         });
+
+        if (storyPrevBtn) storyPrevBtn.disabled = index === 0;
+        if (storyNextBtn) storyNextBtn.disabled = index === storyData.length - 1;
     }
 
     // Clique direto em cada tópico da lista lateral
@@ -454,8 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (storyNextBtn) {
         storyNextBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            currentStoryIndex = (currentStoryIndex + 1) % storyData.length;
-            updateStory(currentStoryIndex);
+            updateStory(currentStoryIndex + 1);
         });
     }
 
@@ -463,8 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (storyPrevBtn) {
         storyPrevBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            currentStoryIndex = (currentStoryIndex - 1 + storyData.length) % storyData.length;
-            updateStory(currentStoryIndex);
+            updateStory(currentStoryIndex - 1);
         });
     }
 
