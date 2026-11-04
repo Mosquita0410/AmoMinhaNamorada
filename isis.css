@@ -1368,44 +1368,59 @@ body.access-locked {
 }
 
 /* ==========================================
-   CORREÇÃO ESPECÍFICA DO LEITOR DE MÚSICA NO CELULAR
+   AJUSTE DEFINITIVO DO LEITOR DE MÚSICA
    ========================================== */
+.music-player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.music-card {
+    background-color: var(--bg-card-dark, #13221c);
+    border: 1px solid var(--border-color, #2a3d34);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.music-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.music-caption {
+    margin-top: 1.2rem;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Responsivo para telemóveis */
 @media (max-width: 768px) {
-    /* Ajustar o container principal da música para ocupar bem o espaço sem esticar */
-    .music-player-container, 
-    #musicas .music-card,
-    .player-card {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 1.5rem 1rem !important;
-        margin: 0 auto !important;
+    .music-player-container {
+        padding: 0 1rem;
         box-sizing: border-box;
     }
 
-    /* Alinhar perfeitamente os controles (botões de avançar/retroceder/play) */
-    .player-controls, 
+    .music-card {
+        padding: 1.5rem 1rem;
+        max-width: 100%;
+    }
+
     .music-controls {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 1.2rem !important;
-        width: 100% !important;
-    }
-
-    /* Garantir que a barra de progresso da música não ultrapasse os limites */
-    .progress-bar-container, 
-    .music-progress {
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    /* Mensagem de rodapé da música ("Amo ser seu dengo...") com margem adequada */
-    .music-caption, 
-    #musicas p.section-desc + p,
-    .music-card p {
-        text-align: center !important;
-        font-size: 0.95rem !important;
-        padding: 0 1rem !important;
-        margin-top: 1rem !important;
+        gap: 1.2rem;
     }
 }
