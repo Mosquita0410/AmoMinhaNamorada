@@ -1366,3 +1366,46 @@ body.access-locked {
         margin-bottom: 1.5rem;
     }
 }
+
+/* ==========================================
+   CORREÇÃO ESPECÍFICA DO LEITOR DE MÚSICA NO CELULAR
+   ========================================== */
+@media (max-width: 768px) {
+    /* Ajustar o container principal da música para ocupar bem o espaço sem esticar */
+    .music-player-container, 
+    #musicas .music-card,
+    .player-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1.5rem 1rem !important;
+        margin: 0 auto !important;
+        box-sizing: border-box;
+    }
+
+    /* Alinhar perfeitamente os controles (botões de avançar/retroceder/play) */
+    .player-controls, 
+    .music-controls {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 1.2rem !important;
+        width: 100% !important;
+    }
+
+    /* Garantir que a barra de progresso da música não ultrapasse os limites */
+    .progress-bar-container, 
+    .music-progress {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Mensagem de rodapé da música ("Amo ser seu dengo...") com margem adequada */
+    .music-caption, 
+    #musicas p.section-desc + p,
+    .music-card p {
+        text-align: center !important;
+        font-size: 0.95rem !important;
+        padding: 0 1rem !important;
+        margin-top: 1rem !important;
+    }
+}
